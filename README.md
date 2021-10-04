@@ -172,8 +172,91 @@ everything starts with kubectl
             ports:
             - containerPort: 80
 
+--------------------------------
+
+`kubectl create -f nginx-deploy.yml`
+
+--------------------------------
+
+### Describe
+`kubectl get pods` - shows pods available
+
+`kubectl describe pod nginx-deployment-5d9cb6447-fjhb7` - use the 
+
+--------------------------------
+
+### Editing the file
+
+- `kubectl edit deploy nginx-deployment`
+- Opens up the notepad where you can edit the code
+- Lets edit the number of pods available
+
+![image](https://user-images.githubusercontent.com/88186084/135882541-603d3998-6e04-44b7-a3fb-f3fb339bd71d.png)
+
+----------------------------------------------
+
+![image](https://user-images.githubusercontent.com/88186084/135882624-60d56971-b81d-40fe-80df-cff003387af2.png)
+
+- Make sure to save on Notepad before exiting
+
+-------------------------------------------------
+
+- Now we have 3 pods running
+![image](https://user-images.githubusercontent.com/88186084/135882741-bfbf572f-c81f-4d91-94ee-a05c59326fbe.png)
+
+-----------------------------------------------------
+
+## nginx-service.yml
+
+Now we will create this file in the same folder and will make the nginx page globally available
 
 
+
+    ---
+    # Select the type of API version and the type of service/object
+    apiVersion: v1
+    kind: Service
+    # Metadata for name
+    metadata:
+      name: nginx-deployment
+      namespace: default
+
+      # Specification to include ports Selector to connector
+    spec:
+      ports:
+      - nodePort: 30442
+        port: 80
+        protocol: TCP
+        targetPort: 80
+
+    # Lets define the selector and label to connect to nginx
+      selector:
+        app: nginx # this label connects this service to deployment
+
+      # Creating LoadBalancer type of deployment
+      type: LoadBalancer
+
+-------------------------
+
+Creates the service.yml file - `kubectl create -f nginx-service.yml`
+
+-------------------------
+
+`kubectl get service` - gets information about the 
+
+![image](https://user-images.githubusercontent.com/88186084/135884448-faf07104-35a2-4fc5-9eee-b9661d5fa1c5.png)
+
+-------------------------
+
+## Localhost
+
+![image](https://user-images.githubusercontent.com/88186084/135885034-393a6b58-d0f9-4ccc-a4a6-bcb458de46fa.png)
+
+-------------------------
+
+- SELF HEALS - when delete pod makes new one. localhost always running. Like an ASG
+
+![image](https://user-images.githubusercontent.com/88186084/135884979-e806df8c-a8c7-473a-a8d7-a74b8bbc4a95.png)
 
 
 
