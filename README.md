@@ -1,13 +1,13 @@
 # Kubernetes_intro
 
-![image](https://user-images.githubusercontent.com/88186084/135876559-8bee85a2-e97e-4469-b6b2-04a6ee80cbcd.png)
-
+![image](https://user-images.githubusercontent.com/88186084/136014968-df58e29a-4ae1-4075-9296-486d000fcf77.png)
 
 --------------------------------------------
 
 ## What is Kubernetes (K8s)
 
-what is it why we use it etc.
+![image](https://user-images.githubusercontent.com/88186084/135876559-8bee85a2-e97e-4469-b6b2-04a6ee80cbcd.png)
+
 Kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management. It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation.
 
 Kubernetes is a open-source container orchestrator. It clusters together groups of hosts running containers, and helps you easily and efficiently manage those clusters.
