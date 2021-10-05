@@ -16,19 +16,19 @@ Kubernetes is a open-source container orchestrator. It clusters together groups 
 
 ## Benefits of Kubernetes
 
-Benefits:
+- Self Healing
+- Load Balancing and Service Dicov
+- Automated rollouts and rollback
+- Auto Scaling
+- Automatic bin packing
+- Storage orchestration
+- Market leader - Kubernetes adoption within enterprise IT environments is rising and no longer just a developer community project. In a recent survey, 59% of respondents cited they were running Kubernetes in production.
 
-Self Healing
-Load Balancing and Service Dicov
-Automated rollouts and rollback
-Auto Scaling
-Automatic bin packing
-Storage orchestration
+--------------------------------------
 
+## Kubernetes Architecture
 
-### Market leader
-Kubernetes adoption within enterprise IT environments is rising and no longer just a developer community project. In a recent survey, 59% of respondents cited they were running Kubernetes in production.
-
+![image](https://user-images.githubusercontent.com/88186084/135995586-3723338f-5e58-426e-b1fa-ef322e7087c1.png)
 
 
 --------------------------------------------
