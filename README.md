@@ -43,13 +43,48 @@ Kubernetes is a open-source container orchestrator. It clusters together groups 
 
 ![image](https://user-images.githubusercontent.com/88186084/136014552-a3073f36-b6b3-42fb-b031-afd51dd9d80d.png)
 
+## The main components of a Kubernetes cluster include:
+
+### Nodes
+
+Nodes are VMs or physical servers that host containerized applications. Each node in a cluster can run one or more application instance. There can be as few as one node, however, a typical Kubernetes cluster will have several nodes (and deployments with hundreds or more nodes are not uncommon).
+
+---------------------------------------------
+
+### Image Registry
+
+Container images are kept in the registry and transferred to nodes by the control plane for execution in container pods.
+Pods: Pods are where containerized applications run. They can include one or more containers and are the smallest unit of deployment for applications in a Kubernetes cluster.
+
+---------------------------------------------
+
+### kube-apiserver
+
+As its name suggests the API server exposes the Kubernetes API, which is communications central. External communications via command line interface (CLI) or other user interfaces (UI) pass to the kube-apiserver, and all control planes to node communications also goes through the API server.
+
+---------------------------------------------
+
+### etcd
+
+The key value store where all data relating to the cluster is stored. etcd is highly available and consistent since all access to etcd is through the API server. Information in etcd is generally formatted in human-readable YAML (which stands for the recursive “YAML Ain’t Markup Language”).
+
+---------------------------------------------
+
+### kube-scheduler
+
+When a new Pod is created, this component assigns it to a node for execution based on resource requirements, policies, and ‘affinity’ specifications regarding geolocation and interference with other workloads.
+
+---------------------------------------------
+
+### kube-controller-manager
+
+Although a Kubernetes cluster has several controller functions, they are all compiled into a single binary known as kube-controller-manager.
 
 -------------------------------------------------
 
-`kubectl` - brings up commands we can use in kubernetes
-everything starts with kubectl
-
 ## Basic Commands (Beginner):
+`kubectl` - brings up commands we can use in kubernetes
+- everything starts with `kubectl`
 
     create        Create a resource from a file or from stdin.
     expose        Take a replication controller, service, deployment or pod and expose it as a new Kubernetes Service
