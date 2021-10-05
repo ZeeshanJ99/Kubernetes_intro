@@ -28,7 +28,7 @@ Kubernetes is a open-source container orchestrator. It clusters together groups 
 
 ## Kubernetes Architecture
 
-![image](https://user-images.githubusercontent.com/88186084/135995586-3723338f-5e58-426e-b1fa-ef322e7087c1.png)
+![image](https://user-images.githubusercontent.com/88186084/135998784-faee5566-e5d0-4cf6-8de3-846a49345c49.png)
 
 
 --------------------------------------------
