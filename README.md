@@ -37,9 +37,14 @@ Kubernetes is a open-source container orchestrator. It clusters together groups 
 
 ![image](https://user-images.githubusercontent.com/88186084/135873929-0abf28c6-e9b3-461b-af7a-7a28f5309cb0.png)
 
+---------------------------------------------
+
+## Docker architecture with nodeapp
+
+![image](https://user-images.githubusercontent.com/88186084/136014552-a3073f36-b6b3-42fb-b031-afd51dd9d80d.png)
 
 
------------------------
+-------------------------------------------------
 
 `kubectl` - brings up commands we can use in kubernetes
 everything starts with kubectl
