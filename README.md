@@ -70,6 +70,12 @@ The key value store where all data relating to the cluster is stored. etcd is hi
 
 ---------------------------------------------
 
+## kube-proxy
+
+kube-proxy is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept. kube-proxy maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster
+
+-------------------------------------
+
 ### kube-scheduler
 
 When a new Pod is created, this component assigns it to a node for execution based on resource requirements, policies, and ‘affinity’ specifications regarding geolocation and interference with other workloads.
