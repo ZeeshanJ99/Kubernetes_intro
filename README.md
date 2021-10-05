@@ -304,10 +304,16 @@ Creates the service.yml file - `kubectl create -f nginx-service.yml`
 
 ![image](https://user-images.githubusercontent.com/88186084/135884979-e806df8c-a8c7-473a-a8d7-a74b8bbc4a95.png)
 
+---------------------------------------------
 
 ## Create deploy and service for mongo
 # create Persistent volume and PVC to claim storage
 # connect the app to db
 # create a Digram for mongo deply and svc
+
+Autoscaling group to scale out on demand based on CPU utilization – min=3, max=9 target to Deployment
+
+![image](https://user-images.githubusercontent.com/88186084/136054700-179c4d48-4354-45a7-b219-f3c24f06f223.png)
+
 
 
