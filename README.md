@@ -445,8 +445,41 @@ Going to `localhost:3000/posts` on a browser will now lead you to get the seeded
 
 -------------------------------------------------------------------
 
+## Cronjob
+cronjob.yml
 
 
+    # Select the API - cronjob works as a batch process
 
+    apiVersion: batch/v1
+    kind: CronJob
+    metadata:
+    # Follow the naming convention - capital isn't accepted nor is _
+      name: sre-cronjob
+    spec:
+      schedule: "*/1 * * * *"
+      jobTemplate:
+        spec:
+          template:
+            spec:
+              containers:
+              - name: sre
+                image: busybox
+                imagePullPolicy: IfNotPresent
+                # This command will override the cmd command
+                command:
+                - /bin/sh
+                - -c
+                - date; echo thank you for using cronjob
+
+              restartPolicy: OnFailure
+
+
+In the terminal use these commands
+- `kubectl create -f cron_job.yml`
+- `kubectl get cronjob`
+- `kubectl get job --watch` copy name and paste on next command
+- `pods=$(kubectl get pods --selector=job-name=eng89-27163575 --output=jsonpath={.items[*].metadata.name})`
+- `kubectl logs $pods` - you should see this message now in the terminal after using this command "thank you for using cronjob"
 
 
