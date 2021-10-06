@@ -476,10 +476,13 @@ cronjob.yml
 
 
 In the terminal use these commands
-- `kubectl create -f cron_job.yml`
-- `kubectl get cronjob`
-- `kubectl get job --watch` copy name and paste on next command
-- `pods=$(kubectl get pods --selector=job-name=eng89-27163575 --output=jsonpath={.items[*].metadata.name})`
+- `kubectl create -f cron_job.yml` - This will create the cronjob
+- `kubectl get pods` - the cronjob pods will be visible
+- `kubectl get job --watch` copy name of the pod and paste on the next next command where it says `pod-id`
+
+![image](https://user-images.githubusercontent.com/88186084/136204320-f2585d39-74bf-4379-8c4a-bb8984e5e0a5.png)
+
+- `pods=$(kubectl get pods --selector=job-name=pod-id --output=jsonpath={.item^Ce}ms[*].metadata.name})`
 - `kubectl logs $pods` - you should see this message now in the terminal after using this command "thank you for using cronjob"
 
 
