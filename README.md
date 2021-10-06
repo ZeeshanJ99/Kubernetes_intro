@@ -335,7 +335,7 @@ Run `kubectl create -f node_hpa.yml` then to check use `kubectl get hpa` to chec
 
 ## Create deploy and service for mongo
 
-### Deploy
+### Mongo Deploy
 
     apiVersion: apps/v1
     kind: Deployment
@@ -367,7 +367,7 @@ Run `kubectl create -f node_hpa.yml` then to check use `kubectl get hpa` to chec
 
 ---------------------------------------------
 
-### Service
+### Mongo Service
 
     apiVersion: v1
     kind: Service
@@ -426,7 +426,16 @@ Run `kubectl create -f node_hpa.yml` then to check use `kubectl get hpa` to chec
 
 ## Connect the NodeApp and DB
 
-Run the command `kubectl exec node env node seeds/seed.js`, this will seed the database on the /posts page
+Run the command `kubectl exec node123 env node seeds/seed.js`, this will seed the database on the /posts page. `node123` refers to the one of the pods when you `kubectl get pods`
+
+![image](https://user-images.githubusercontent.com/88186084/136186700-4dabd14a-4173-4f5c-a675-d8e9114b211b.png)
+
+
+Going to localhost:3000/posts will now lead you to get the seeded posts page!
+
+![image](https://user-images.githubusercontent.com/88186084/136187111-d7a9e13b-7870-4c08-ba94-7cbec1733b4b.png)
+
+
 
 -----------------------------------------------
 
