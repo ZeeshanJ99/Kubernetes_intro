@@ -485,6 +485,8 @@ In the terminal use these commands
 - `pods=$(kubectl get pods --selector=job-name=pod-id --output=jsonpath={.item^Ce}ms[*].metadata.name})`
 - `kubectl logs $pods` - you should see this message now in the terminal after using this command "thank you for using cronjob"
 
+---------------------------------------------
+
 ## Final Kubernetes architecture diagram
 
 ![image](https://user-images.githubusercontent.com/88186084/136207851-71c4bfa8-8db5-481f-94cc-34bb9925bdd0.png)
