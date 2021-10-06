@@ -431,7 +431,7 @@ Run the command `kubectl exec node123 env node seeds/seed.js`, this will seed th
 ![image](https://user-images.githubusercontent.com/88186084/136186700-4dabd14a-4173-4f5c-a675-d8e9114b211b.png)
 
 
-Going to localhost:3000/posts will now lead you to get the seeded posts page!
+Going to `localhost:3000/posts` on a browser will now lead you to get the seeded posts page!
 
 ![image](https://user-images.githubusercontent.com/88186084/136187111-d7a9e13b-7870-4c08-ba94-7cbec1733b4b.png)
 
