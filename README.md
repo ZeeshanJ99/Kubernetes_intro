@@ -384,7 +384,7 @@ Run `kubectl create -f node_hpa.yml` then to check use `kubectl get hpa` to chec
 
 -------------------------------------
 
-## create Persistent volume and PVC to claim storage
+## Create Persistent volume and PVC to claim storage
 
 ### PV
 
