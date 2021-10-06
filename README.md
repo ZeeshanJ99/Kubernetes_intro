@@ -306,14 +306,138 @@ Creates the service.yml file - `kubectl create -f nginx-service.yml`
 
 ---------------------------------------------
 
-## Create deploy and service for mongo
-# create Persistent volume and PVC to claim storage
-# connect the app to db
-# create a Digram for mongo deply and svc
+## Horizontal scaling group
 
 Autoscaling group to scale out on demand based on CPU utilization – min=3, max=9 target to Deployment
 
+    # Create a file called node_hpa.yml
+    # Create an Autoscaling group for our node app
+
+    apiVersion: autoscaling/v1
+    kind: HorizontalPodAutoscaler #(hpa)
+
+    metadata:
+      name: sparta-node-app-deploy
+      namespace: default
+
+    spec:
+      maxReplicas: 9 #(max number of instances/pods)
+      minReplicas: 1 #(min number of instances/pods)
+      scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: node
+      targetCPUUtilizationPercentage: 50 # 50% of CPU use
+
+Run `kubectl create -f node_hpa.yml` then to check use `kubectl get hpa` to check its live
+
+-------------------------------------
+
+## Create deploy and service for mongo
+
+### Deploy
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: mongo
+    spec:
+      selector:
+        matchLabels:
+          app: mongo
+      replicas: 3
+      template:
+        metadata:
+          labels:
+            app: mongo
+        spec:
+          containers:
+            - name: mongo
+              image: mongo:latest
+
+              ports:
+                - containerPort: 27017
+              volumeMounts:
+                - name: storage
+                  mountPath: /data/db
+          volumes:
+            - name: storage
+              persistentVolumeClaim:
+                claimName: mongo-db
+
+---------------------------------------------
+
+### Service
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: mongo
+    spec:
+      selector:
+        app: mongo
+      ports:
+        - port: 27017
+          targetPort: 27017
+      type: LoadBalancer
+
+
+-------------------------------------
+
+## create Persistent volume and PVC to claim storage
+
+### PV
+
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: pv0001
+    spec:
+      capacity:
+        storage: 200Mi
+      volumeMode: Filesystem
+      accessModes:
+        - ReadWriteOnce
+      persistentVolumeReclaimPolicy: Recycle
+      storageClassName: slow
+      hostPath:
+        path: /data
+        type: Directory
+
+
+--------------------------------
+
+### PVC
+
+    ---
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: mongo-db
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 256Mi
+
+
+-------------------------------------
+
+## Connect the NodeApp and DB
+
+Run the command `kubectl exec node env node seeds/seed.js`, this will seed the database on the /posts page
+
+-----------------------------------------------
+
+## Diagram for mongo deploy and svc
+
 ![image](https://user-images.githubusercontent.com/88186084/136054700-179c4d48-4354-45a7-b219-f3c24f06f223.png)
+
+-------------------------------------------------------------------
+
+
+
 
 
 
